@@ -1,15 +1,19 @@
 package TravelManagementSystem;
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-public class DashBoard extends JFrame{
+public class DashBoard extends JFrame implements ActionListener{
 	
 	JButton psDetails, updDetails, vpDetails, dsDetails, vpakages, bpakages, cpakages, vhotels, bhotel,
 			vbhotel, dlocation, payment, calculate, notepad, about;
+	String username;
 	
-	DashBoard() {
+	DashBoard(String username) {
+		
+		this.username = username;
 		//setBounds(200, 100, 1200, 700);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLayout(null);
@@ -47,6 +51,7 @@ public class DashBoard extends JFrame{
 		psDetails.setForeground(Color.WHITE);
 		psDetails.setFont(new Font("Tobama", Font.BOLD, 20));
 		psDetails.setMargin(new Insets(0, 0, 0, 60));
+		psDetails.addActionListener(this);
 		p2.add(psDetails);
 		
 		updDetails = new JButton("Update Personal Details");
@@ -168,9 +173,14 @@ public class DashBoard extends JFrame{
 		
 		setVisible(true);
 	}
+	public void actionPerformed(ActionEvent ae) {
+		if(ae.getSource() == psDetails) {
+			new AddCustomer(username);
+		}
+	}
 
 	public static void main(String[] args) {
-		new DashBoard();
+		new DashBoard("");
 
 	}
 
