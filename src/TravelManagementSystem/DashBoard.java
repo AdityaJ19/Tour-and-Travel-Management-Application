@@ -60,6 +60,7 @@ public class DashBoard extends JFrame implements ActionListener{
 		updDetails.setForeground(Color.WHITE);
 		updDetails.setFont(new Font("Tobama", Font.BOLD, 20));
 		updDetails.setMargin(new Insets(0, 0, 0, 30));
+		
 		p2.add(updDetails);
 		
 		vpDetails = new JButton("View Details");
@@ -68,6 +69,7 @@ public class DashBoard extends JFrame implements ActionListener{
 		vpDetails.setForeground(Color.WHITE);
 		vpDetails.setFont(new Font("Tobama", Font.BOLD, 20));
 		vpDetails.setMargin(new Insets(0, 0, 0, 140));
+		vpDetails.addActionListener(this);
 		p2.add(vpDetails);
 		
 		dsDetails = new JButton("Delete Personal Details");
@@ -176,6 +178,8 @@ public class DashBoard extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == psDetails) {
 			new AddCustomer(username);
+		}else if(ae.getSource() == vpDetails) {
+			new ViewCustomer(username);
 		}
 	}
 
